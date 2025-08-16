@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Skip in CI environments
+if [ -n "$CI" ]; then
+  exit 0
+fi
+
+SUBJECT=$(git log -1 --pretty=%s)
+
+# Skip if version commit (to avoid infinite loop from npm version)
+if printf "%s" "$SUBJECT" | grep -Eq '^(v)?[0-9]+\.[0-9]+\.[0-9]+'; then
+  exit 0
+fi
+
+# Allow skipping releases explicitly
+if printf "%s" "$SUBJECT" | grep -Eq '\[skip release\]'; then
+  exit 0
+fi
+
+# Decide which release to run based on commit type
+if printf "%s" "$SUBJECT" | grep -Eq '^feat!'; then
+  echo "Husky: detected breaking feature (feat!), running release:major"
+  npm run -s release:major || exit 0
+elif printf "%s" "$SUBJECT" | grep -Eq '^feat(\(|:)'; then
+  echo "Husky: detected feature, running release:minor"
+  npm run -s release:minor || exit 0
+elif printf "%s" "$SUBJECT" | grep -Eq '^fix(\(|:)'; then
+  echo "Husky: detected fix, running release:patch"
+  npm run -s release:patch || exit 0
+elif printf "%s" "$SUBJECT" | grep -Eq '^chore(\(|:)'; then
+  echo "Husky: detected chore, running release:patch"
+  npm run -s release:patch || exit 0
+fi
+
+exit 0

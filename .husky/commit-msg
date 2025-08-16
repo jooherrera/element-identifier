@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+MSG_FILE="$1"
+
+# Allow merge commits and version commits to pass without checks
+FIRST_LINE=$(head -n 1 "$MSG_FILE")
+case "$FIRST_LINE" in
+  Merge*|""|v[0-9]*.[0-9]*.[0-9]*|[0-9]*.[0-9]*.[0-9]*)
+    exit 0
+    ;;
+esac
+
+# Conventional commit check for: feat, fix, chore (optional scope), optional breaking '!'
+# Examples:
+#   feat: add feature
+#   feat(scope): add feature
+#   feat!: breaking change
+#   fix: bug fix
+#   chore: maintenance
+if printf "%s" "$FIRST_LINE" | grep -Eq '^(feat|fix|chore)(\([^)]+\))?(!)?: .+'; then
+  exit 0
+fi
+
+printf "\033[31mInvalid commit message.\033[0m\n" >&2
+printf "Expected format (Conventional Commit):\n" >&2
+printf "  - feat: short description\n" >&2
+printf "  - feat!: breaking change description\n" >&2
+printf "  - fix: short description\n" >&2
+printf "  - chore: short description\n" >&2
+printf "Optionally you can use a scope: feat(scope): ...\n" >&2
+exit 1

@@ -3,7 +3,7 @@ import { ElementIdentifierAPI } from './api/element-identifier-api';
 
 /*
  * Element Identifier - Web Component (TypeScript)
- * Una herramienta para identificar elementos del DOM y comunicarse mejor con IA
+ * A tool to identify DOM elements and communicate them better to AI
  */
 
 export class PanelPosition {
@@ -119,7 +119,7 @@ export class ElementIdentifier extends HTMLElement implements ElementIdentifierC
     }
 
     // eslint-disable-next-line no-console
-    console.log('🎯 Element Identifier cargado! Usa elementIdentifier.activate() para empezar');
+    console.log('🎯 Element Identifier loaded! Use elementIdentifier.activate() to start');
   }
 
   disconnectedCallback(): void {
@@ -135,7 +135,7 @@ export class ElementIdentifier extends HTMLElement implements ElementIdentifierC
     this.updateUI();
     this.attachEventListeners();
     // eslint-disable-next-line no-console
-    console.log('%c🎯 Element Identifier activado!', 'color: #3b82f6; font-size: 16px; font-weight: bold;');
+    console.log('%c🎯 Element Identifier activated!', 'color: #3b82f6; font-size: 16px; font-weight: bold;');
     // eslint-disable-next-line no-console
     console.log('%cHaz clic en cualquier elemento para ver su identificador', 'color: #10b981;');
 

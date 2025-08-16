@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ejemplo: Contador React + element-identifier</title>
-    <!-- React UMD + Babel (para un ejemplo sin build) -->
+    <title>Example: React Counter + element-identifier</title>
+    <!-- React UMD + Babel (for a no-build example) -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Carga la librería ya construida desde la carpeta dist del proyecto raíz -->
-    <!-- Asegúrate de ejecutar `npm run build` en el root antes de abrir este ejemplo -->
+    <!-- Load the pre-built library from the dist folder at the project root -->
+    <!-- Make sure to run `npm run build` at the root before opening this example -->
     <script type="module" src="./dist/index.esm.js"></script>
 
     <style>
@@ -26,7 +26,7 @@
     </style>
   </head>
   <body>
-    <!-- Componente Web de la librería (se auto-registra al cargar el script ESM) -->
+    <!-- Library Web Component (auto-registers when the ESM script loads) -->
     <element-identifier show-wheel="false"></element-identifier>
 
     <div id="root"></div>
@@ -41,28 +41,28 @@
               <button
                 data-component="ToggleEIButton"
                 onClick={() => window.elementIdentifier && window.elementIdentifier.toggle && window.elementIdentifier.toggle()}
-                title="Alternar Element Identifier"
+                title="Toggle Element Identifier"
               >
-                Alternar identificador 🎯
+                Toggle identifier 🎯
               </button>
 
               <button
                 data-component="ActivateEIButton"
                 onClick={() => window.elementIdentifier && window.elementIdentifier.activate && window.elementIdentifier.activate()}
-                title="Activar Element Identifier"
+                title="Activate Element Identifier"
               >
-                Activarrrr
+                Activate
               </button>
               <button
                 data-component="DeactivateEIButton"
                 onClick={() => window.elementIdentifier && window.elementIdentifier.deactivate && window.elementIdentifier.deactivate()}
-                title="Desactivar Element Identifier"
+                title="Deactivate Element Identifier"
               >
-                Desactivar
+                Deactivate
               </button>
             </div>
 
-            <h1 className="title" data-component="Title">Contador con React</h1>
+            <h1 className="title" data-component="Title">React Counter</h1>
 
             <div className="row" data-component="Controls">
               <button data-component="DecButton" onClick={() => setCount((c) => c - 1)}>-1</button>
@@ -74,8 +74,7 @@
             </div>
 
             <p className="hint" data-component="Hint">
-              Consejo: activa el identificador y haz clic sobre los elementos para ver
-              su selector y metadatos. Prueba con los botones o el número.
+              Tip: activate the identifier and click elements to see their selector and metadata. Try the buttons or the number.
             </p>
           </div>
         );

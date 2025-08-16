@@ -1,116 +1,150 @@
-# Guía de Contribución: Convenciones de Commits
+# Contribution Guide: Conventional Commits
 
-Este proyecto sigue el estándar "Conventional Commits" para mensajes de commit. Esto facilita el versionado semántico (SemVer), el historial legible y la automatización de lanzamientos.
+This project follows the Conventional Commits standard for commit messages. It enables semantic versioning (SemVer), readable history, and automated releases.
 
-## Formato básico
+## Basic format
 
 ```
-<tipo>[!][(alcance)]: <resumen en presente e imperativo>
+<type>[!][(scope)]: <summary in present, imperative mood>
 
-[Descripción detallada opcional]
+[Optional detailed description]
 
-[Notas opcionales]
-BREAKING CHANGE: <descripción del cambio incompatible>
+[Optional footers]
+BREAKING CHANGE: <description of the incompatible change>
 Refs: <issue|PR>
 ```
 
-- tipo: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
-- !: indica un cambio incompatible (breaking change)
-- alcance (opcional): área del código afectada, por ejemplo: core, api, build, selector
-- resumen: breve, en una línea, sin punto final
+- type: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
+- !: marks a breaking (incompatible) change
+- scope (optional): the area affected, e.g., core, api, build, selector
+- summary: short, single line, no trailing period
 
-## Impacto en versionado semántico (SemVer)
+## Impact on semantic versioning (SemVer)
 
-- feat: agrega una nueva funcionalidad sin romper compatibilidad → MINOR (x.Y.z)
-- fix: corrige un bug sin romper compatibilidad → PATCH (x.y.Z)
-- feat! o cualquier tipo con bandera de ruptura (! o BREAKING CHANGE) → MAJOR (X.y.z)
+- feat: adds a new feature without breaking compatibility → MINOR (x.Y.z)
+- fix: fixes a bug without breaking compatibility → PATCH (x.y.Z)
+- feat! or any type with a breaking flag (! or BREAKING CHANGE) → MAJOR (X.y.z)
 
-Resumen solicitado:
+Requested summary examples:
 - feat: add new feature       # Minor version bump
 - fix: fix critical bug       # Patch version bump
 - feat!: breaking change      # Major version bump
 
-## Reglas y buenas prácticas
+## Rules and best practices
 
-- Usa español o inglés de forma consistente; elige uno por repositorio. Mantén el imperativo: "agrega", "corrige", "actualiza".
-- Mantén el resumen corto (≤ 72 caracteres). Sin punto final.
-- Usa scope cuando ayude a identificar el área afectada: `feat(selector): ...`
-- Para cambios incompatibles, marca con `!` tras el tipo o añade un bloque `BREAKING CHANGE:` en el cuerpo.
-- Si aplica, referencia issues/PRs en el pie: `Refs: #123`, `Closes: #456`.
+- Keep language consistent across the repo; use English for this project. Use the imperative mood: "add", "fix", "update".
+- Keep the subject short (≤ 72 chars). No trailing period.
+- Use a scope when it helps identify the affected area: `feat(selector): ...`
+- For breaking changes, add `!` after the type or include a `BREAKING CHANGE:` footer in the body.
+- Reference issues/PRs in the footer when applicable: `Refs: #123`, `Closes: #456`.
 
-## Ejemplos
+## Examples
 
-- Mensajes simples:
+- Simple messages:
   - `feat: add copy to clipboard functionality`
   - `fix: resolve panel positioning issue`
   - `feat!: change API from activate() to start()`
 
-- Con alcance y cuerpo:
+- With scope and body:
   ```
   feat(selector): support nth-child strategy for complex queries
   
-  Agrega un algoritmo adicional para construir selectores estables cuando el id no está disponible.
+  Adds an additional algorithm to build stable selectors when id is not available.
   Refs: #42
   ```
 
-- Cambio incompatible (dos formas equivalentes):
+- Breaking change (two equivalent forms):
   ```
   feat!: rename option `activateOnLoad` to `autoStart`
   
-  BREAKING CHANGE: La opción `activateOnLoad` fue renombrada a `autoStart`. Los consumidores deben actualizar su configuración.
+  BREAKING CHANGE: The `activateOnLoad` option was renamed to `autoStart`. Consumers must update their configuration.
   ```
 
-- Corrección de bug con test:
+- Bug fix with tests:
   ```
   fix(utils): handle null root element in selector builder
   
-  Añade guardas para evitar excepciones cuando el nodo raíz es null.
-  Tests incluidos.
+  Adds guards to avoid exceptions when the root node is null.
+  Includes tests.
   Closes: #128
   ```
 
-## Tipos comunes (sugeridos)
+## Common types (suggested)
 
-- feat: nueva funcionalidad para el usuario
-- fix: corrección de bug para el usuario
-- docs: cambios solo en documentación
-- style: cambios que no afectan la lógica (formato, espacios, comas)
-- refactor: cambios internos sin nuevas features ni fixes
-- perf: mejoras de rendimiento
-- test: agregar/ajustar pruebas
-- build: cambios en el sistema de build o dependencias
-- ci: cambios en pipelines/Workflows
-- chore: mantenimiento (no src ni test)
-- revert: revertir un commit previo
+- feat: new user-facing functionality
+- fix: user-facing bug fix
+- docs: documentation-only changes
+- style: changes that don't affect logic (formatting, whitespace)
+- refactor: internal changes without new features or fixes
+- perf: performance improvements
+- test: add/adjust tests
+- build: build system or dependency changes
+- ci: CI/workflow changes
+- chore: maintenance (not src or tests)
+- revert: revert a previous commit
 
-## Plantilla rápida
+## Quick template
 
 ```
-<tipo>[!][(alcance)]: <resumen>
+<type>[!][(scope)]: <summary>
 
-[contexto/motivo]
-[qué cambia]
-[impacto]
+[context/reason]
+[what changes]
+[impact]
 
 [BREAKING CHANGE: ...]
 [Refs|Closes: #id]
 ```
 
-Siguiendo estas reglas, facilitamos la colaboración, el versionado automático y un historial de cambios claro.
+Following these rules helps collaboration, automatic versioning, and a clear changelog.
 
-## Flujo de trabajo: Pull Requests (no commits directos a master/main)
+## Workflow: Pull Requests (no direct commits to master/main)
 
-- Todos los cambios deben realizarse mediante Pull Request (PR).
-- No se permiten commits ni pushes directamente a las ramas `master` o `main`.
-- Crea una rama a partir de `main` con un nombre descriptivo:
-  - `feat/<descripcion-corta>` para nuevas funcionalidades
-  - `fix/<descripcion-corta>` para correcciones
-  - `chore/<descripcion-corta>` u otros tipos según corresponda
-- Abre un PR y solicita revisión. El PR debe:
-  - Pasar el pipeline de CI y pruebas.
-  - Mantener/Mejorar cobertura de tests.
-  - Seguir "Conventional Commits" en el título del PR.
-- Una vez aprobado, realiza "Squash & Merge" desde la plataforma (p.ej. GitHub). No reescribas el historial de `main`.
-- Para cambios incompatibles (breaking changes), márcalos con `!` o un bloque `BREAKING CHANGE:` en el cuerpo del PR.
+- All changes must go through a Pull Request (PR).
+- No direct commits or pushes to `master` or `main`.
+- Create a branch from `main` with a descriptive name:
+  - `feat/<short-description>` for new features
+  - `fix/<short-description>` for fixes
+  - `chore/<short-description>` or other types as appropriate
+- Open a PR and request review. The PR must:
+  - Pass CI and tests.
+  - Maintain/improve test coverage.
+  - Follow Conventional Commits in the PR title.
+- Once approved, use "Squash & Merge" in the platform (e.g., GitHub). Do not rewrite `main` history.
+- For breaking changes, mark with `!` or include a `BREAKING CHANGE:` footer in the PR body.
 
-> Recomendación: habilitar protección de ramas para `main/master` y requerir revisiones antes de mergear.
+> Recommendation: enable branch protection for `main/master` and require reviews before merging.
+
+## Commit Hooks & Automated Releases
+
+This repository uses Husky to enforce commit messages and to optionally bump versions automatically after commits:
+
+- commit-msg hook: validates the first line of your commit message. Allowed types (with optional scope) and optional breaking marker `!`:
+  feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert.
+  - Valid examples: `feat: add X`, `feat(ui): add X`, `feat!: breaking change`, `fix: correct Y`, `chore: maintenance`, `docs: update README`
+  - Merge commits and version commits (e.g. `v0.1.1` or `0.1.1`) are allowed without checks.
+- post-commit hook: decides which release script to run based on the last commit subject:
+  - `feat!:` → runs `npm run release:major`
+  - `feat:` → runs `npm run release:minor`
+  - Any other allowed type (`fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`, etc.) → runs `npm run release:patch`
+  - Skips on CI, for version commits, and if the subject contains `[skip release]`.
+
+Notes:
+- The release scripts call `npm version <type>` and push tags. Ensure your git remote is set and you have permissions.
+- If you don’t want a specific commit to trigger a version bump, add `[skip release]` to its subject.
+
+## CI & Publishing
+
+- On Pull Requests: CI runs type-checking and tests with coverage.
+- On push to `main`/`master`: CI builds the package and then publishes to npm.
+  - Requires repository secret `NPM_TOKEN` configured in GitHub → Settings → Secrets and variables → Actions.
+  - Publishing uses `npm publish --provenance --access public` and relies on `prepublishOnly` to build and test before publishing.
+- Versioning: npm requires a unique version each publish. Make sure a version bump occurs before/when merging. Alternatively, switch to release-on-tags and publish only when a `v*` tag is pushed.
+
+## Contributor checklist
+
+- [ ] Write commits using Conventional Commits (feat, fix, chore; use `!` or BREAKING CHANGE for majors).
+- [ ] Prefer English in code and docs.
+- [ ] Add/adjust tests and keep CI green.
+- [ ] If a commit shouldn’t bump version, include `[skip release]`.
+- [ ] When merging to main/master, ensure version bump is appropriate so npm publish succeeds (or use tags workflow).

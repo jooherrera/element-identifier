@@ -1,5 +1,5 @@
 // scripts/serve-react-counter.js
-// Borra dist del ejemplo, construye el proyecto, copia dist al ejemplo y levanta un server.
+// Clean example dist, build the project, copy dist to the example, and start a server.
 
 const { execSync, spawn } = require('child_process');
 const fs = require('fs');
@@ -27,20 +27,20 @@ function copyRecursive(src, dest) {
 }
 
 try {
-  log('1/4 Borrando dist del ejemplo si existe:', exampleDist);
+  log('1/4 Removing example dist if it exists:', exampleDist);
   rmDirIfExists(exampleDist);
 
-  log('2/4 Construyendo librería (npm run build)');
+  log('2/4 Building library (npm run build)');
   execSync('npm run build', { cwd: repoRoot, stdio: 'inherit' });
 
   if (!fs.existsSync(rootDist)) {
-    throw new Error('No se encontró la carpeta dist en el root tras el build.');
+    throw new Error('dist folder not found at the repo root after build.');
   }
 
-  log('3/4 Copiando dist al ejemplo:', `${rootDist} -> ${exampleDist}`);
+  log('3/4 Copying dist to the example:', `${rootDist} -> ${exampleDist}`);
   copyRecursive(rootDist, exampleDist);
 
-  log('4/4 Levantando servidor estático:', `http://localhost:${PORT}`);
+  log('4/4 Starting static server:', `http://localhost:${PORT}`);
   const npxCmd = process.platform === 'win32' ? 'npx.cmd' : 'npx';
   const child = spawn(npxCmd, ['serve', exampleDir, '-l', PORT], {
     stdio: 'inherit',

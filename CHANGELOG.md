@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.5 - 2025-08-16
+- Docs: add/update changelog to reflect current state.
+- CI: clarify that publishing happens on push to main/master, aligning docs with the existing workflow.
+
 ## 0.1.4 - 2025-08-16
 - CI: publish to npm only on tags (refs/tags/v*); keeps provenance, NPM_TOKEN checks, always-auth, and .npmrc fallback.
 

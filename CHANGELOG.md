@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.8 - 2025-08-16
+- Docs: streamline README — removed getUniqueSelector usage and the Scripts/Tests/Contributing sections; moved the Examples section to the end; clarified Web Component API and events; simplified Quick Start and CDN usage.
+
+## 0.1.7 - 2025-08-16
+- Docs: add README screenshot for the React Counter demo (examples/img.png).
+
+## 0.1.6 - 2025-08-16
+- Docs: remove explicit `defineElementIdentifier()` usage from README quick start as requested.
+
 ## 0.1.5 - 2025-08-16
 - Docs: add/update changelog to reflect current state.
 - CI: clarify that publishing happens on push to main/master, aligning docs with the existing workflow.

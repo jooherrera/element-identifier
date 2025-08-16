@@ -27,7 +27,7 @@
   </head>
   <body>
     <!-- Library Web Component (auto-registers when the ESM script loads) -->
-    <element-identifier show-wheel="false"></element-identifier>
+    <element-identifier></element-identifier>
 
     <div id="root"></div>
 
@@ -37,30 +37,6 @@
 
         return (
           <div className="card" data-component="CounterCard">
-            <div className="toolbar" data-component="Toolbar">
-              <button
-                data-component="ToggleEIButton"
-                onClick={() => window.elementIdentifier && window.elementIdentifier.toggle && window.elementIdentifier.toggle()}
-                title="Toggle Element Identifier"
-              >
-                Toggle identifier 🎯
-              </button>
-
-              <button
-                data-component="ActivateEIButton"
-                onClick={() => window.elementIdentifier && window.elementIdentifier.activate && window.elementIdentifier.activate()}
-                title="Activate Element Identifier"
-              >
-                Activate
-              </button>
-              <button
-                data-component="DeactivateEIButton"
-                onClick={() => window.elementIdentifier && window.elementIdentifier.deactivate && window.elementIdentifier.deactivate()}
-                title="Deactivate Element Identifier"
-              >
-                Deactivate
-              </button>
-            </div>
 
             <h1 className="title" data-component="Title">React Counter</h1>
 

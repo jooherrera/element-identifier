@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo: Contador React + element-identifier</title>
+    <!-- React UMD + Babel (para un ejemplo sin build) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Carga la librería ya construida desde la carpeta dist del proyecto raíz -->
+    <!-- Asegúrate de ejecutar `npm run build` en el root antes de abrir este ejemplo -->
+    <script type="module" src="./dist/index.esm.js"></script>
+
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'; margin: 0; padding: 2rem; }
+      .card { max-width: 480px; margin: 0 auto; padding: 2rem; border: 1px solid #e5e7eb; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+      .title { font-size: 1.25rem; margin: 0 0 1rem; color: #111827; }
+      .counter { font-size: 3rem; font-weight: bold; color: #2563eb; margin: 1rem 0; }
+      .row { display: flex; gap: .5rem; align-items: center; }
+      button { padding: .5rem .75rem; border-radius: 8px; border: 1px solid #cbd5e1; background: white; cursor: pointer; }
+      button:hover { background: #f8fafc; }
+      .toolbar { display:flex; gap:.5rem; margin-bottom: 1rem; }
+      .hint { color: #64748b; font-size: .875rem; margin-top: 1rem; }
+    </style>
+  </head>
+  <body>
+    <!-- Componente Web de la librería (se auto-registra al cargar el script ESM) -->
+    <element-identifier show-wheel="false"></element-identifier>
+
+    <div id="root"></div>
+
+    <script type="text/babel" data-presets="react">
+      function Counter({ initial = 0 }) {
+        const [count, setCount] = React.useState(initial);
+
+        return (
+          <div className="card" data-component="CounterCard">
+            <div className="toolbar" data-component="Toolbar">
+              <button
+                data-component="ToggleEIButton"
+                onClick={() => window.elementIdentifier && window.elementIdentifier.toggle && window.elementIdentifier.toggle()}
+                title="Alternar Element Identifier"
+              >
+                Alternar identificador 🎯
+              </button>
+
+              <button
+                data-component="ActivateEIButton"
+                onClick={() => window.elementIdentifier && window.elementIdentifier.activate && window.elementIdentifier.activate()}
+                title="Activar Element Identifier"
+              >
+                Activarrrr
+              </button>
+              <button
+                data-component="DeactivateEIButton"
+                onClick={() => window.elementIdentifier && window.elementIdentifier.deactivate && window.elementIdentifier.deactivate()}
+                title="Desactivar Element Identifier"
+              >
+                Desactivar
+              </button>
+            </div>
+
+            <h1 className="title" data-component="Title">Contador con React</h1>
+
+            <div className="row" data-component="Controls">
+              <button data-component="DecButton" onClick={() => setCount((c) => c - 1)}>-1</button>
+              <button data-component="IncButton" onClick={() => setCount((c) => c + 1)}>+1</button>
+            </div>
+
+            <div className="counter" role="status" data-testid="counter-value">
+              {count}
+            </div>
+
+            <p className="hint" data-component="Hint">
+              Consejo: activa el identificador y haz clic sobre los elementos para ver
+              su selector y metadatos. Prueba con los botones o el número.
+            </p>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<Counter initial={0} />);
+    </script>
+  </body>
+</html>

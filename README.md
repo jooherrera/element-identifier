@@ -57,6 +57,51 @@ Prioritizes common testing attributes (data-testid, data-test, data-qa, data-cy)
 
 PRs welcome! Please run `npm run build` and `npm test` before submitting.
 
+## Ejemplos
+
+- React Counter: examples/react-counter
+  - Pasos:
+    1. npm install
+    2. npm run build
+    3. Sirve la carpeta examples/react-counter (por ejemplo: `npx serve examples/react-counter`) y abre el navegador.
+
+## Web Component (element-identifier)
+
+El proyecto incluye un Web Component que muestra una rueda flotante (FAB) y un panel de información para identificar elementos del DOM.
+
+- Insertar en HTML con configuración inicial desde la etiqueta:
+  
+  <element-identifier 
+    show-wheel="true" 
+    active="false" 
+    show-panel="true">
+  </element-identifier>
+  
+  Atributos disponibles (booleanos):
+  - `show-wheel`: controla si se muestra la rueda (FAB).
+    - `true`, `1`, `on`, `yes` o vacío → visible (por defecto)
+    - `false`, `0`, `off`, `no` → oculta
+  - `active`: controla si la herramienta inicia activada.
+    - `true`/vacío → activa al iniciar
+    - `false` → desactiva (por defecto)
+  - `show-panel`: controla si el panel puede mostrarse.
+    - `true`/vacío → el panel se mostrará cuando haya un elemento seleccionado (por defecto)
+    - `false` → el panel permanece oculto hasta que lo alternes
+  - Compatibilidad: `auto-start` sigue funcionando como alias de `active` (soporta `true`/`false`).
+
+- API en consola (y desde código vía `elementIdentifier` o `window.elementIdentifier`):
+  - `elementIdentifier.showWheel()` → muestra la rueda
+  - `elementIdentifier.hideWheel()` → oculta la rueda
+  - `elementIdentifier.toggleWheel()` → alterna visibilidad de la rueda
+  - `elementIdentifier.isWheelVisible()` → devuelve `true/false`
+
+Además de:
+  - `elementIdentifier.activate()` / `deactivate()` / `toggle()`
+  - `elementIdentifier.togglePanel()`
+
+Nota:
+- En la consola del navegador puedes usar directamente `elementIdentifier.activate()` sin el prefijo `window`. La librería define un alias global para tu comodidad. Si prefieres, `window.elementIdentifier` también funciona.
+
 ## License
 
 MIT © Joo Herrera

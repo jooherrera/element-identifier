@@ -25,6 +25,7 @@
     "lint": "eslint \"src/**/*.ts\"",
     "format": "prettier --write \"src/**/*.ts\"",
     "type-check": "tsc --noEmit",
+    "example:react-counter": "node scripts/serve-react-counter.js",
     "prepublishOnly": "npm run build && npm test",
     "release:patch": "npm version patch && git push --tags",
     "release:minor": "npm version minor && git push --tags",

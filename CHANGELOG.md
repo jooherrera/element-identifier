@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.3 - 2025-08-16
+- CI: harden npm publish step — verify NPM_TOKEN is set, enable always-auth, and configure .npmrc fallback for NODE_AUTH_TOKEN.
+- Docs: clarify commit hooks, release mapping, and CI/publishing flow in guidelines.
+- Docs: minor English copy improvements in README and example.
+
 ## 0.1.2 - 2025-08-16
 - Docs: translated README, example README, and example HTML to English; clarified usage and scripts.
 - Chore: expanded Husky commit-msg to support common Conventional Commit types; simplified post-commit to map feat!/feat/others to major/minor/patch; added Husky shim; documented hooks in guidelines.

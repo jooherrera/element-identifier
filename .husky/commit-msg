@@ -11,22 +11,23 @@ case "$FIRST_LINE" in
     ;;
 esac
 
-# Conventional commit check for: feat, fix, chore (optional scope), optional breaking '!'
+# Conventional commit check for common types with optional scope and optional breaking '!'
+# Allowed types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert
 # Examples:
 #   feat: add feature
 #   feat(scope): add feature
 #   feat!: breaking change
 #   fix: bug fix
 #   chore: maintenance
-if printf "%s" "$FIRST_LINE" | grep -Eq '^(feat|fix|chore)(\([^)]+\))?(!)?: .+'; then
+#   docs: update README
+if printf "%s" "$FIRST_LINE" | grep -Eq '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([^)]+\))?(!)?: .+'; then
   exit 0
 fi
 
 printf "\033[31mInvalid commit message.\033[0m\n" >&2
-printf "Expected format (Conventional Commit):\n" >&2
+printf "Expected format (Conventional Commit) with one of types [feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert]:\n" >&2
 printf "  - feat: short description\n" >&2
 printf "  - feat!: breaking change description\n" >&2
-printf "  - fix: short description\n" >&2
-printf "  - chore: short description\n" >&2
-printf "Optionally you can use a scope: feat(scope): ...\n" >&2
+printf "  - fix|chore|docs|refactor|...: short description\n" >&2
+printf "Optionally you can use a scope: type(scope): ...\n" >&2
 exit 1

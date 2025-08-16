@@ -68,19 +68,19 @@ Quick start:
 
 PRs welcome! Please run `npm run build` and `npm test` before submitting.
 
-## Ejemplos
+## Examples
 
 - React Counter: examples/react-counter
-  - Pasos:
+  - Steps:
     1. npm install
     2. npm run build
-    3. Sirve la carpeta examples/react-counter (por ejemplo: `npx serve examples/react-counter`) y abre el navegador.
+    3. Serve the examples/react-counter folder (for example: `npx serve examples/react-counter`) and open your browser.
 
 ## Web Component (element-identifier)
 
-El proyecto incluye un Web Component que muestra una rueda flotante (FAB) y un panel de información para identificar elementos del DOM.
+The project includes a Web Component that shows a floating action button (FAB) and an info panel to help identify DOM elements.
 
-- Insertar en HTML con configuración inicial desde la etiqueta:
+- Insert in HTML with initial configuration via attributes:
   
   <element-identifier 
     show-wheel="true" 
@@ -88,30 +88,30 @@ El proyecto incluye un Web Component que muestra una rueda flotante (FAB) y un p
     show-panel="true">
   </element-identifier>
   
-  Atributos disponibles (booleanos):
-  - `show-wheel`: controla si se muestra la rueda (FAB).
-    - `true`, `1`, `on`, `yes` o vacío → visible (por defecto)
-    - `false`, `0`, `off`, `no` → oculta
-  - `active`: controla si la herramienta inicia activada.
-    - `true`/vacío → activa al iniciar
-    - `false` → desactiva (por defecto)
-  - `show-panel`: controla si el panel puede mostrarse.
-    - `true`/vacío → el panel se mostrará cuando haya un elemento seleccionado (por defecto)
-    - `false` → el panel permanece oculto hasta que lo alternes
-  - Compatibilidad: `auto-start` sigue funcionando como alias de `active` (soporta `true`/`false`).
+  Available boolean attributes:
+  - `show-wheel`: controls whether the wheel (FAB) is shown.
+    - `true`, `1`, `on`, `yes`, or empty → visible (default)
+    - `false`, `0`, `off`, `no` → hidden
+  - `active`: controls whether the tool starts activated.
+    - `true`/empty → active on start
+    - `false` → disabled (default)
+  - `show-panel`: controls whether the panel can be shown.
+    - `true`/empty → the panel will show when an element is selected (default)
+    - `false` → the panel remains hidden until you toggle it
+  - Compatibility: `auto-start` still works as an alias for `active` (supports `true`/`false`).
 
-- API en consola (y desde código vía `elementIdentifier` o `window.elementIdentifier`):
-  - `elementIdentifier.showWheel()` → muestra la rueda
-  - `elementIdentifier.hideWheel()` → oculta la rueda
-  - `elementIdentifier.toggleWheel()` → alterna visibilidad de la rueda
-  - `elementIdentifier.isWheelVisible()` → devuelve `true/false`
+- Console API (and from code via `elementIdentifier` or `window.elementIdentifier`):
+  - `elementIdentifier.showWheel()` → show the wheel
+  - `elementIdentifier.hideWheel()` → hide the wheel
+  - `elementIdentifier.toggleWheel()` → toggle wheel visibility
+  - `elementIdentifier.isWheelVisible()` → returns `true/false`
 
-Además de:
+Additionally:
   - `elementIdentifier.activate()` / `deactivate()` / `toggle()`
   - `elementIdentifier.togglePanel()`
 
-Nota:
-- En la consola del navegador puedes usar directamente `elementIdentifier.activate()` sin el prefijo `window`. La librería define un alias global para tu comodidad. Si prefieres, `window.elementIdentifier` también funciona.
+Note:
+- In the browser console you can call `elementIdentifier.activate()` directly without the `window` prefix. The library exposes a global alias for convenience. `window.elementIdentifier` also works if you prefer.
 
 ## License
 

@@ -25,11 +25,9 @@ if printf "%s" "$SUBJECT" | grep -Eq '^feat!'; then
 elif printf "%s" "$SUBJECT" | grep -Eq '^feat(\(|:)'; then
   echo "Husky: detected feature, running release:minor"
   npm run -s release:minor || exit 0
-elif printf "%s" "$SUBJECT" | grep -Eq '^fix(\(|:)'; then
-  echo "Husky: detected fix, running release:patch"
-  npm run -s release:patch || exit 0
-elif printf "%s" "$SUBJECT" | grep -Eq '^chore(\(|:)'; then
-  echo "Husky: detected chore, running release:patch"
+else
+  # Any other commit type (docs, refactor, fix, style, perf, test, build, ci, chore, revert, etc.) -> patch
+  echo "Husky: detected non-feature change, running release:patch"
   npm run -s release:patch || exit 0
 fi
 

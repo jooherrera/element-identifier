@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.4 - 2025-08-16
+- CI: publish to npm only on tags (refs/tags/v*); keeps provenance, NPM_TOKEN checks, always-auth, and .npmrc fallback.
+
 ## 0.1.3 - 2025-08-16
 - CI: harden npm publish step — verify NPM_TOKEN is set, enable always-auth, and configure .npmrc fallback for NODE_AUTH_TOKEN.
 - Docs: clarify commit hooks, release mapping, and CI/publishing flow in guidelines.

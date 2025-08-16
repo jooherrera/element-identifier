@@ -18,3 +18,6 @@ yarn-error.log*
 
 # OS junk
 .DS_Store
+
+# Examples
+/examples/*/dist

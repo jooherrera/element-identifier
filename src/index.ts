@@ -1,2 +1,1 @@
-// Public API intentionally removed. Configuration-only project.
-export {};
+export { ElementIdentifier, defineElementIdentifier } from './element-identifier';

@@ -64,6 +64,25 @@ Quick start:
 - Run tests: `npm test`
 - Coverage: `npm test -- --coverage`
 
+## Release
+
+This repository uses semantic-release (Option B) for automated versioning and publishing:
+- On Pull Requests: CI runs tests only.
+- On push to `master`: CI builds the project and semantic-release analyzes Conventional Commit messages to determine the next version, updates CHANGELOG.md, creates a git tag/GitHub release, and publishes to npm.
+
+Requirements:
+- Use Conventional Commits in PR titles/commits (see guidelines.md).
+- `NPM_TOKEN` secret with publish permission configured in the repository.
+
+## Commit message linting (Husky + commitlint)
+
+- This repo includes Husky hooks and commitlint to enforce Conventional Commits on every commit message.
+- On `npm install`, the `prepare` script will run `husky install` and set up the hooks locally.
+- If you cloned the repo before this change, run `npm run prepare` once to install hooks.
+
+Manual checks:
+- Lint your commit message against Conventional Commits: `npx commitlint --from=HEAD~1 --to=HEAD --verbose`
+
 ## Contributing
 
 PRs welcome! Please run `npm run build` and `npm test` before submitting.

@@ -43,12 +43,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
+          always-auth: true
+      - name: Verify NPM_TOKEN is configured
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "::error::NPM_TOKEN is not configured. Add it in GitHub → Settings → Secrets and variables → Actions (name: NPM_TOKEN).";
+            exit 1;
+          fi
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm ci
-      - run: npm publish --provenance --access public
+      - name: Configure npm auth (fallback)
+        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish
+        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

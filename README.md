@@ -53,6 +53,17 @@ Prioritizes common testing attributes (data-testid, data-test, data-qa, data-cy)
 - format: `prettier --write src/**/*.ts`
 - type-check: `tsc --noEmit`
 
+## Tests
+
+This project uses Jest (ts-jest + jsdom). Currently, tests are limited to the `src/api` subtree and coverage is collected only from `src/api/**/*.ts` (see `jest.config.js`).
+
+See TESTS.md for the full test plan and instructions.
+
+Quick start:
+- Install dependencies: `npm install`
+- Run tests: `npm test`
+- Coverage: `npm test -- --coverage`
+
 ## Contributing
 
 PRs welcome! Please run `npm run build` and `npm test` before submitting.

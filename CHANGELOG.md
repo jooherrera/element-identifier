@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.4 - 2025-08-17
+- Docs: simplify README to usage-only (CDN script, component tag, optional attributes, brief notes).
+
 ## 0.2.3 - 2025-08-17
 - Docs: minor documentation cleanups and clarifications; no code changes.
 

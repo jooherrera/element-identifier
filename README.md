@@ -4,7 +4,7 @@ Generate stable, unique CSS selectors to identify DOM elements — and use a Web
 
 ## How to use (CDN + Web Component)
 
-1) Add the script tag (ESM) to your HTML (head or before </body>):
+1) Add the script tag (ESM) to your HTML (head or before):
 - CDN : https://cdn.jsdelivr.net/npm/element-identifier/dist/index.esm.js
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/npm/element-identifier/dist/index.esm.js"></script>
@@ -32,3 +32,14 @@ Use attributes on the tag to control behavior:
 ### Notes
 - If you don’t see the button, verify the CDN script loaded and no blockers prevented it.
 - You can toggle the tool from the on-screen controls. No additional JS is required for basic use.
+
+### Recommendation: use data-component
+For more stable, human- and tool-friendly selectors, add a data-component attribute to your component root or key nodes (e.g., product card, image, or button).
+
+Example:
+```html
+<div class="card" data-component="ProductCard">
+  <img src="/img.jpg" alt="..." data-component="ProductImage" />
+  <button data-component="AddToCartButton">Add to cart</button>
+</div>
+```

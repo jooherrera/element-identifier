@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.0 - 2025-08-16
+- Feat: add HTML5 demo with minimal setup and CDN usage for `element-identifier` (examples/html5). Documentation updated to point to the demo.
+
 ## 0.1.8 - 2025-08-16
 - Docs: streamline README — removed getUniqueSelector usage and the Scripts/Tests/Contributing sections; moved the Examples section to the end; clarified Web Component API and events; simplified Quick Start and CDN usage.
 

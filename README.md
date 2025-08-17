@@ -66,6 +66,8 @@ Notes:
 
 ## Examples
 
+- HTML5 (no build, CDN): examples/html5
+  - Open examples/html5/index.html directly, or serve with: `npx serve examples/html5`
 - React Counter: examples/react-counter
   - One-liner:
     - npm run example:react-counter

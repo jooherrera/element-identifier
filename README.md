@@ -10,15 +10,22 @@ npm install element-identifier
 
 ## Quick Start (Web Component)
 
-Minimal HTML (auto-registers in the browser):
-
-<element-identifier active="false" show-wheel="true" show-panel="true"></element-identifier>
-
 From CDN (for quick demos):
 
-<script type="module" src="https://unpkg.com/element-identifier/dist/index.esm.js"></script>
-<!-- now the element is defined: -->
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/element-identifier/dist/index.esm.js"></script>
+```
+
+Minimal HTML (auto-registers in the browser):
+
+```html
 <element-identifier></element-identifier>
+```
+
+```html
+<element-identifier active="false" show-wheel="true" show-panel="true"></element-identifier>
+```
+
 
 ### Screenshot
 

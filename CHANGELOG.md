@@ -1,6 +1,10 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+
+## 1.0.3
+- Docs: README — add React usage example in Spanish (dynamic import + JSX for `<element-identifier>`).
+
 ## 1.0.2 - 2025-08-17
 - Docs: add README screenshot image from examples/img.png.
 

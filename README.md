@@ -46,6 +46,43 @@ Example:
 ```
 
 
+## React usage (Example)
+If you use React, you can load the Web Component dynamically to ensure the custom element is defined before rendering it.
+
+```tsx
+import {useEffect} from "react";
+
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            'element-identifier': {
+                active?: string;
+                'show-wheel'?: string;
+                'show-panel'?: string;
+            };
+        }
+    }
+}
+
+export default function Home() {
+    useEffect(() => {
+        import('element-identifier');
+    }, []);
+  return (
+    <main>    
+        <element-identifier
+            active="false"
+            show-wheel="true"
+            show-panel="true"
+        />
+    </main>
+  );
+}
+```
+
+- The dynamic import registers the custom element (`<element-identifier>`) in the browser when the component mounts.
+- You can then use the tag directly in your JSX with the optional attributes.
+
 ### Screenshot
 
 ![Element Identifier demo (React Counter)](examples/img.png)

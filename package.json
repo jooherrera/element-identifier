@@ -1,6 +1,6 @@
 {
   "name": "element-identifier",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Generate stable, unique CSS selectors to identify DOM elements.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

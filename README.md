@@ -64,6 +64,46 @@ Events emitted by the component:
 Notes:
 - In the browser console you can call `elementIdentifier.activate()` directly without the `window` prefix. A global alias is injected for convenience. `window.elementIdentifier` also works.
 
+## Recommendation: use data-component to identify components
+
+To make component identification stable (for humans and for tools/AI), it is recommended to add a `data-component` attribute to the root element of each component, or to the key nodes you want to track.
+
+The Web Component and the API of this library already detect `data-component` and display it in the panel/console as "Identifier". This helps generate more semantic selectors and makes it easy to recognize which component an element belongs to.
+
+- Benefits:
+  - More stable and readable selectors (for example, `[data-component="ProductCard"]`)
+  - Event and metrics traceability per component
+  - Clearer communication between teams and tooling/AI
+
+Examples:
+
+Plain HTML:
+
+```html
+<div class="card" data-component="ProductCard">
+  <img src="/img.jpg" alt="..." data-component="ProductImage" />
+  <button data-component="AddToCartButton">Add to cart</button>
+</div>
+```
+
+React (JSX):
+
+```tsx
+function ProductCard({ product }) {
+  return (
+    <div className="card" data-component="ProductCard">
+      <img src={product.image} alt={product.name} data-component="ProductImage" />
+      <button data-component="AddToCartButton">Add to cart</button>
+    </div>
+  );
+}
+```
+
+Practical tips:
+- Use component names in PascalCase or kebab-case consistent with your codebase (e.g., `ProductCard`, `product-card`).
+- Place it on the component's root element and, if helpful, on critical sub-elements.
+- Avoid overly specific dynamic values (IDs, indexes) that reduce stability.
+
 ## Examples
 
 - HTML5 (no build, CDN): examples/html5

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.1 - 2025-08-16
+- Docs: recommend adding a `data-component` attribute to identify components; examples and practical tips added to README.
+- Docs: translated the new `data-component` recommendation section to English, keeping examples (HTML and React) and wording consistent.
+
 ## 0.2.0 - 2025-08-16
 - Feat: add HTML5 demo with minimal setup and CDN usage for `element-identifier` (examples/html5). Documentation updated to point to the demo.
 

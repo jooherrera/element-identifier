@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.2 - 2025-08-17
+- Docs: update README CDN example to use jsDelivr (cdn.jsdelivr.net) ESM URL for element-identifier.
+
 ## 0.2.1 - 2025-08-16
 - Docs: recommend adding a `data-component` attribute to identify components; examples and practical tips added to README.
 - Docs: translated the new `data-component` recommendation section to English, keeping examples (HTML and React) and wording consistent.

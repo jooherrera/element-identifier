@@ -1,4 +1,5 @@
 # element-identifier
+version: 1.0.2
 
 Generate stable, unique CSS selectors to identify DOM elements — and use a Web Component to inspect and pick them visually.
 
@@ -43,3 +44,8 @@ Example:
   <button data-component="AddToCartButton">Add to cart</button>
 </div>
 ```
+
+
+### Screenshot
+
+![Element Identifier demo (React Counter)](examples/img.png)

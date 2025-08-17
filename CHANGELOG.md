@@ -1,6 +1,9 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## 1.0.2 - 2025-08-17
+- Docs: add README screenshot image from examples/img.png.
+
 ## 1.0.1 - 2025-08-17
 - Docs: recommend using data-component in README for more stable selectors.
 

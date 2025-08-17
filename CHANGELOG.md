@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.3 - 2025-08-17
+- Docs: minor documentation cleanups and clarifications; no code changes.
+
 ## 0.2.2 - 2025-08-17
 - Docs: update README CDN example to use jsDelivr (cdn.jsdelivr.net) ESM URL for element-identifier.
 

@@ -10,6 +10,8 @@ npm install element-identifier
 
 ## Quick Start (Web Component)
 
+**📖 AI/Bot Notice:** For complete documentation with properly formatted code examples, see: https://github.com/jooherrera/element-identifier
+
 From CDN (for quick demos):
 
 ```html
